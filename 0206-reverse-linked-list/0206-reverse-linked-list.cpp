@@ -10,9 +10,20 @@
  */
 class Solution {
 public:
+
+    ListNode* recur(ListNode* pre, ListNode* now)
+    {
+        if (now == nullptr)
+            return pre;
+
+        ListNode *next = now -> next;
+        now -> next = pre;
+        return recur(now, next);
+    }
     
     ListNode* reverseList(ListNode* head) {
         
+        /*
         ListNode *pre = nullptr;
         ListNode *now = head;
         if (head == nullptr || head -> next == nullptr) return now;
@@ -26,5 +37,7 @@ public:
         }
 
         return pre;
+        */
+        return recur(nullptr, head);
     }
 };
